@@ -1,0 +1,6 @@
+[submodule "optimized_antsMultivariateTemplateConstruction"]
+	path = optimized_antsMultivariateTemplateConstruction
+	url = https://github.com/CoBrALab/optimized_antsMultivariateTemplateConstruction
+[submodule "mri-tb1"]
+	path = mri-tb1
+	url = https://github.com/Douglas-Cerebral-Imaging-Centre/mri-tb1
