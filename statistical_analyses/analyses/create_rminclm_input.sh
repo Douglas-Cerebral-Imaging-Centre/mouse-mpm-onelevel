@@ -5,10 +5,11 @@ mpm_maps=( _MPM_R2s \
            _MTSat_delta \
            _MTSat_PD_rb1corr \
            _MTSat_R1 \
+           _MTR \
          )
 
 # Define the input CSV file
-original_csv_file="../sourcedata/cuprizone_ids.csv"
+original_csv_file="../sourcedata/mice_info.csv"
 
 # Create output folder
 mkdir -p ../derivatives/statistical_analyses/rminc_inputs/
@@ -23,7 +24,7 @@ if [ -z "$mouseid_col_index" ]; then
 fi
 
 original_csv_header=$(head -n 1 "$original_csv_file")
-csv_header=${original_csv_header},TimeToDiet,Filename
+csv_header=${original_csv_header},Filename
 
 for i_mpm_map in ${mpm_maps[@]}; do
 i_csv_output=../derivatives/statistical_analyses/rminc_inputs/rminc_input${i_mpm_map}.csv
@@ -40,9 +41,7 @@ do
   i_mouseidx=$(echo "$i_mouseidx" | sed 's/^0*//')
 
   # Add mpm map filename at the end of the line
-  precup_line="$line,pre,../derivatives/qi/outputs_to_commonspace/subject_${i_mouseidx}/sub-${i_mouseid}_ses-precup${i_mpm_map}_smoothed_fwhm200um_blur.mnc"
+  precup_line="$line,../derivatives/qi/outputs_to_commonspace/sub-${i_mouseid}_ses-1${i_mpm_map}_smoothed_fwhm200um_blur.mnc"
   echo "$precup_line" >> "$i_csv_output"
-  postcup_line="$line,post,../derivatives/qi/outputs_to_commonspace/subject_${i_mouseidx}/sub-${i_mouseid}_ses-postcup${i_mpm_map}_smoothed_fwhm200um_blur.mnc"
-  echo "$postcup_line" >> "$i_csv_output"
 done
 done
