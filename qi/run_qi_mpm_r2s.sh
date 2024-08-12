@@ -24,7 +24,7 @@ for i_subject in ../rawdata/sub-*/; do
       ../derivatives/qi/inputs/r2s_mpm/${i_subject_id}/${i_session_id}/anat/${i_subject_id}_${i_session_id}_echo-1-7_flip-2_mt-off_MPM_degibbs_reg_to_preproc_MTw.nii.gz \
       ../derivatives/qi/inputs/r2s_mpm/${i_subject_id}/${i_session_id}/anat/${i_subject_id}_${i_session_id}_echo-1-6_flip-1_mt-on_MPM_degibbs_reg_to_preproc_MTw.nii.gz \
       --out="../derivatives/qi/outputs/r2s_mpm/${i_subject_id}/${i_session_id}/${i_subject_id}_${i_session_id}_" \
-      --mask="../derivatives/registration/modelbuild/firstlevel/subject_${i_subject_idx}/subjectspace-resample/session_${i_session_idx}/DSURQE_80micron_mask_to_${i_subject_id}_${i_session_id}_echo-rms-1-4_flip-1_mt-on_MPM_degibbs_preproc.nii.gz" \
+      --mask="../derivatives/registration/modelbuild/subjectspace-resample/subject_${i_subject_idx}/DSURQE_40micron_mask_to_${i_subject_id}_${i_session_id}_echo-rms-1-4_flip-1_mt-on_MPM_degibbs_preproc.nii.gz" \
       --resids --covar \
       --json="qi/qi_mpm_r2s_param.json"
       

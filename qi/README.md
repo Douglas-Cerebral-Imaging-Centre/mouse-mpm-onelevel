@@ -9,5 +9,6 @@ qi/create_qi_r2s_inputs.sh
 qi/run_qi_mpm_r2s.sh
 qi/run_qi_mtsat.sh
 qi/correct_pd_rb1.sh
+qi/create_qi_mtr_inputs.sh
 qi/run_qi_mtr.sh
 ```

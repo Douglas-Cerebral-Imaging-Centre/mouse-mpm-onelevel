@@ -1,4 +1,6 @@
-#!/bin/bash
+#! /bin/bash
+set -euo pipefail
+IFS=$'\n\t'
 
 i_subject_idx=0
 
@@ -17,12 +19,12 @@ for i_subject in ../rawdata/sub-*/; do
     # Divide by TB1 (we assume TB1 and RB1 are the same for a transmit-receive coil; reciprocity principle)
     ImageMath 3 ../derivatives/qi/outputs/mtsat/${i_subject_id}/${i_session_id}/${i_subject_id}_${i_session_id}_MTSat_PD_rb1corr.nii.gz / \
       ../derivatives/qi/outputs/mtsat/${i_subject_id}/${i_session_id}/${i_subject_id}_${i_session_id}_MTSat_PD.nii.gz \
-      ../derivatives/tb1/${i_subject_id}/${i_session_id}/fmap/${i_subject_id}_${i_session_id}_flip-1_TB1map_to_MTw_smoothed.nii.gz
+      ../derivatives/tb1/${i_subject_id}/${i_session_id}/fmap/${i_subject_id}_${i_session_id}_acq-calcpul_flip-1_TB1map_to_MTw_smoothed.nii.gz
 
     # Mask after division
     ImageMath 3 ../derivatives/qi/outputs/mtsat/${i_subject_id}/${i_session_id}/${i_subject_id}_${i_session_id}_MTSat_PD_rb1corr.nii.gz m \
       ../derivatives/qi/outputs/mtsat/${i_subject_id}/${i_session_id}/${i_subject_id}_${i_session_id}_MTSat_PD_rb1corr.nii.gz \
-      ../derivatives/registration/modelbuild/firstlevel/subject_${i_subject_idx}/subjectspace-resample/session_${i_session_idx}/DSURQE_80micron_mask_to_${i_subject_id}_${i_session_id}_echo-rms-1-4_flip-1_mt-on_MPM_degibbs_preproc.nii.gz
+      ../derivatives/registration/modelbuild/subjectspace-resample/subject_${i_subject_idx}/DSURQE_40micron_mask_to_${i_subject_id}_${i_session_id}_echo-rms-1-4_flip-1_mt-on_MPM_degibbs_preproc.nii.gz
 
   done
 done

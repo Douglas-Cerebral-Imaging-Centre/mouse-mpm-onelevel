@@ -18,15 +18,15 @@ for i_subject in ../rawdata/sub-*/; do
 
     ImageMath 4 ../derivatives/qi/inputs/r2s_mpm/${i_subject_id}/${i_session_id}/anat/${i_subject_id}_${i_session_id}_echo-1-7_flip-1_mt-off_MPM_degibbs_reg_to_preproc_MTw.nii.gz TimeSeriesAssemble \
       0.0022 0.002 \
-      ${folder_with_3d_data}${i_subject_id}/${i_session_id}/anat/${i_subject_id}_${i_session_id}_echo-{1..7}_flip-1_mt-off_MPM_degibbs_reg_to_preproc_MTw.nii
+      ${folder_with_3d_data}${i_subject_id}/${i_session_id}/anat/${i_subject_id}_${i_session_id}_echo-{1..7}_flip-1_mt-off_MPM_degibbs_reg_to_preproc_MTw.nii.gz
 
     ImageMath 4 ../derivatives/qi/inputs/r2s_mpm/${i_subject_id}/${i_session_id}/anat/${i_subject_id}_${i_session_id}_echo-1-6_flip-1_mt-on_MPM_degibbs_reg_to_preproc_MTw.nii.gz TimeSeriesAssemble \
       0.0022 0.002 \
-      ${folder_with_3d_data}${i_subject_id}/${i_session_id}/anat/${i_subject_id}_${i_session_id}_echo-{1..6}_flip-1_mt-on_MPM_degibbs_reg_to_preproc_MTw.nii
+      ${folder_with_3d_data}${i_subject_id}/${i_session_id}/anat/${i_subject_id}_${i_session_id}_echo-{1..6}_flip-1_mt-on_MPM_degibbs_reg_to_preproc_MTw.nii.gz
 
     ImageMath 4 ../derivatives/qi/inputs/r2s_mpm/${i_subject_id}/${i_session_id}/anat/${i_subject_id}_${i_session_id}_echo-1-7_flip-2_mt-off_MPM_degibbs_reg_to_preproc_MTw.nii.gz TimeSeriesAssemble \
       0.0022 0.002 \
-      ${folder_with_3d_data}${i_subject_id}/${i_session_id}/anat/${i_subject_id}_${i_session_id}_echo-{1..7}_flip-2_mt-off_MPM_degibbs_reg_to_preproc_MTw.nii
+      ${folder_with_3d_data}${i_subject_id}/${i_session_id}/anat/${i_subject_id}_${i_session_id}_echo-{1..7}_flip-2_mt-off_MPM_degibbs_reg_to_preproc_MTw.nii.gz
 
     done
 done
