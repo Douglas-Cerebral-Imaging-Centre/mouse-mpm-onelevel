@@ -63,12 +63,12 @@ for i_subject in ../rawdata/sub-*/; do
     output_dir=../derivatives/registration/reg_within_ses/${i_subject_id}/${i_session_id}/anat/
     # Loop over all echoes
     for i_echo in {1..6}; do
-      # Apply transforms to raw echoes
+      # Resample raw echoes
       antsApplyTransforms -d 3 --verbose -n $interpolation \
         -i ${i_session}anat/${i_subject_id}_${i_session_id}_echo-${i_echo}_flip-1_mt-on_MPM.nii.gz \
         -o ${output_dir}${i_subject_id}_${i_session_id}_echo-${i_echo}_flip-1_mt-on_MPM${regvol_suffix}.nii.gz \
         -r ${i_fixed_vol}
-      # Apply transforms to degibbsed echoes
+      # Resample to degibbsed echoes
       antsApplyTransforms -d 3 --verbose -n $interpolation \
         -i ../derivatives/mrdegibbs/${i_subject_id}/${i_session_id}/anat/${i_subject_id}_${i_session_id}_echo-${i_echo}_flip-1_mt-on_MPM_degibbs.nii.gz \
         -o ${output_dir}${i_subject_id}_${i_session_id}_echo-${i_echo}_flip-1_mt-on_MPM_degibbs${regvol_suffix}.nii.gz \

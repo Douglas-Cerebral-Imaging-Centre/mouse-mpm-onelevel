@@ -4,7 +4,7 @@ IFS=$'\n\t'
 
 # Back-propagate atlas mask to individual MT-weighted preprocessed space
 optimized_antsMultivariateTemplateConstruction/subjectspace_resample.sh \
-  --resample-input /data/foujer/atlas/Dorr_2008_Steadman_2013_Ullmann_2013_Richards_2011_Qiu_2016_Egan_2015_80micron/DSURQE_80micron_mask.nii.gz \
+  --resample-input ${QUARANTINE_PATH}/resources/Dorr_2008_Steadman_2013_Ullmann_2013_Richards_2011_Qiu_2016_Egan_2015_40micron/ex-vivo/DSURQE_40micron_mask.nii.gz \
   --resample-input-space final-target \
   --output-dir ../derivatives/registration/modelbuild/ \
   ../derivatives/registration/modelbuild/inputs.txt
@@ -17,11 +17,11 @@ registration/create_modelbuild_inputfile.sh \
   ../derivatives/registration/modelbuild/inputs_template.txt \
   -p ../rawdata/ \
   -f fmap \
-  -s _flip-1_TB1DAM.nii \
+  -s _acq-calcpul_flip-1_TB1DAM.nii.gz \
   -o ${target_space}
 
 optimized_antsMultivariateTemplateConstruction/subjectspace_resample.sh \
-  --resample-input /data/foujer/atlas/Dorr_2008_Steadman_2013_Ullmann_2013_Richards_2011_Qiu_2016_Egan_2015_80micron/DSURQE_80micron_mask.nii.gz \
+  --resample-input ${QUARANTINE_PATH}/resources/Dorr_2008_Steadman_2013_Ullmann_2013_Richards_2011_Qiu_2016_Egan_2015_40micron/ex-vivo/DSURQE_40micron_mask.nii.gz \
   --resample-input-space final-target \
   --output-dir ../derivatives/registration/modelbuild/ \
   --target-space ${target_space} \
