@@ -23,7 +23,7 @@ for i_subject in ../rawdata/sub-*/; do
       ../derivatives/qi/outputs/r2s_mpm/${i_subject_id}/${i_session_id}/${i_subject_id}_${i_session_id}_MPM_S0_PDw.nii.gz \
       ../derivatives/qi/outputs/r2s_mpm/${i_subject_id}/${i_session_id}/${i_subject_id}_${i_session_id}_MPM_S0_T1w.nii.gz \
       ../derivatives/qi/outputs/r2s_mpm/${i_subject_id}/${i_session_id}/${i_subject_id}_${i_session_id}_MPM_S0_MTw.nii.gz \
-      --B1="../derivatives/tb1/${i_subject_id}/${i_session_id}/fmap/${i_subject_id}_${i_session_id}_acq-calcpul_flip-1_TB1map_to_MTw_smoothed.nii.gz" \
+      --B1="../derivatives/tb1/${i_subject_id}/${i_session_id}/fmap/${i_subject_id}_${i_session_id}_flip-1_TB1map_to_MTw_smoothed.nii.gz" \
       --out="../derivatives/qi/outputs/mtsat/${i_subject_id}/${i_session_id}/${i_subject_id}_${i_session_id}_" \
       --mask="../derivatives/registration/modelbuild/subjectspace-resample/subject_${i_subject_idx}/DSURQE_40micron_mask_to_${i_subject_id}_${i_session_id}_echo-rms-1-4_flip-1_mt-on_MPM_degibbs_preproc.nii.gz" \
       --delta-max=30 \

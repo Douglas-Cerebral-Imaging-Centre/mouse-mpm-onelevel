@@ -17,7 +17,7 @@ registration/create_modelbuild_inputfile.sh \
   ../derivatives/registration/modelbuild/inputs_template.txt \
   -p ../rawdata/ \
   -f fmap \
-  -s _acq-calcpul_flip-1_TB1DAM.nii.gz \
+  -s _flip-1_TB1DAM.nii.gz \
   -o ${target_space}
 
 optimized_antsMultivariateTemplateConstruction/subjectspace_resample.sh \

@@ -19,7 +19,7 @@ for i_subject in ../rawdata/sub-*/; do
     # Divide by TB1 (we assume TB1 and RB1 are the same for a transmit-receive coil; reciprocity principle)
     ImageMath 3 ../derivatives/qi/outputs/mtsat/${i_subject_id}/${i_session_id}/${i_subject_id}_${i_session_id}_MTSat_PD_rb1corr.nii.gz / \
       ../derivatives/qi/outputs/mtsat/${i_subject_id}/${i_session_id}/${i_subject_id}_${i_session_id}_MTSat_PD.nii.gz \
-      ../derivatives/tb1/${i_subject_id}/${i_session_id}/fmap/${i_subject_id}_${i_session_id}_acq-calcpul_flip-1_TB1map_to_MTw_smoothed.nii.gz
+      ../derivatives/tb1/${i_subject_id}/${i_session_id}/fmap/${i_subject_id}_${i_session_id}_flip-1_TB1map_to_MTw_smoothed.nii.gz
 
     # Mask after division
     ImageMath 3 ../derivatives/qi/outputs/mtsat/${i_subject_id}/${i_session_id}/${i_subject_id}_${i_session_id}_MTSat_PD_rb1corr.nii.gz m \

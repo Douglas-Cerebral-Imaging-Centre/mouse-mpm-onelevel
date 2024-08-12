@@ -11,7 +11,7 @@ sed -e 's/Underscore001Underscore//g' -i $2
 # Specify the CSV file name
 
 # For each line in bids_conversion/scan_indices.csv, do the appropriate substitution
-while IFS=',' read -r _ subject_id session_id structural_scanidx flip1_TB1DAM_scanidx flip2_TB1DAM_scanidx flip1_TB1DAM_calc_scanidx flip2_TB1DAM_calc_scanidx mpm_pdw_scanidx mpm_mtw_scanidx mpm_t1w_scanidx; do
+while IFS=',' read -r _ subject_id session_id structural_scanidx flip1_TB1DAM_scanidx flip2_TB1DAM_scanidx mpm_pdw_scanidx mpm_mtw_scanidx mpm_t1w_scanidx; do
     sed -i "s/${subject_id},${session_id},${structural_scanidx},1,anat,,,,,,,,,,,,,/${subject_id},${session_id},${structural_scanidx},1,anat,,,,,,,,,,,PDw,,/" $2
     sed -i "s/${subject_id},${session_id},${flip1_TB1DAM_scanidx},1,anat,,,,,,,,,,,,,/${subject_id},${session_id},${flip1_TB1DAM_scanidx},1,fmap,,sincpul,,,,,,1,,,TB1DAM,,/" $2
     sed -i "s/${subject_id},${session_id},${flip2_TB1DAM_scanidx},1,anat,,,,,,,,,,,,,/${subject_id},${session_id},${flip2_TB1DAM_scanidx},1,fmap,,sincpul,,,,,,2,,,TB1DAM,,/" $2
