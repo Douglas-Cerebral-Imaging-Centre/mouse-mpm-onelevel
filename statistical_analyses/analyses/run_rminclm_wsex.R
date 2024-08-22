@@ -24,7 +24,7 @@ dim2_end <- max(which(averagemask == 1, arr.ind=TRUE)[,"dim2"])
 dim3_begin <- min(which(averagemask == 1, arr.ind=TRUE)[,"dim3"])
 dim3_end <- max(which(averagemask == 1, arr.ind=TRUE)[,"dim3"])
 
-dir.create("../derivatives/statistical_analyses/rminc_outputs/", showWarnings = FALSE)
+dir.create("../derivatives/statistical_analyses/rminc_outputs/wsex/", showWarnings = FALSE)
 mpm_maps <- c("MPM_R2s", "MTSat_delta", "MTSat_PD_rb1corr", "MTSat_R1", "MTR")
 brain_mask <- "../derivatives/registration/modelbuild/final-target/DSURQE_40micron_mask_to_template.mnc"
 fdr_threshold_for_svg <- "0.2"
@@ -34,22 +34,25 @@ for (i_mpm_map in mpm_maps) {
    csv_file_content_df <- read.csv(glue("../derivatives/statistical_analyses/rminc_inputs/rminc_input_{i_mpm_map}.csv"))
    
    # Test pre-vs-post diet
-   model <- mincLm(Filename ~ ExperimentGroup, csv_file_content_df, mask=brain_mask)
+   csv_file_content_df$Treatment <- factor(csv_file_content_df$Treatment)
+   csv_file_content_df <- within(csv_file_content_df, Treatment <- relevel(Treatment, ref = "PBS"))
+   model <- mincLm(Filename ~ Treatment + Sex, csv_file_content_df, mask=brain_mask)
    print(model)
    thresholds = attr(mincFDR(model, mask=brain_mask), "thresholds")
    print(thresholds)
 
-   mincWriteVolume(model, paste0("../derivatives/statistical_analyses/rminc_outputs/control_vs_3xtg_tvalue-ExperimentGroupcontrol_",i_mpm_map,".mnc"), "tvalue-ExperimentGroupcontrol")
+   mincWriteVolume(model, paste0("../derivatives/statistical_analyses/rminc_outputs/wsex/tvalue-TreatmentD-AIP_",i_mpm_map,".mnc"), "tvalue-TreatmentD-AIP")
+   mincWriteVolume(model, paste0("../derivatives/statistical_analyses/rminc_outputs/wsex/tvalue-TreatmentS-AIP_",i_mpm_map,".mnc"), "tvalue-TreatmentS-AIP")
 
    for (predictor in dimnames(thresholds)[[2]][c(-1,-2)]) {
  
       #If you want to save this to a file, uncomment next line
-      svg(paste0("../derivatives/statistical_analyses/rminc_outputs/control_vs_3xtg_",i_mpm_map,"_",predictor,"_tstatthresh-2.svg"), height = 3.1, width = 4)
+      svg(paste0("../derivatives/statistical_analyses/rminc_outputs/wsex/pbs_vs_",predictor,"_",i_mpm_map,"_tstatfdrthresh-p2.svg"), height = 3.1, width = 4)
       #We use a tryCatch here to keep going if there's some kind of error in a an individual plot
       tryCatch({
       #Here, we extract the thresholds from the code, and clip them to 2 digits, otherwise the plotting doesn't look good
       lowerthreshold = round(thresholds[fdr_threshold_for_svg,predictor],digits=2)
-      lowerthreshold <- 2
+      #lowerthreshold <- 2
       #Sometimes, there isn't an 0.01 threshold, when thats the case, we use the max instead, be careful to read the threshold array printed above
       upperthreshold = round(ifelse(is.na(thresholds["0.01",predictor]), max(c(max(mincArray(model, predictor)),abs(min(mincArray(model, predictor))))), thresholds["0.01",predictor]),digits=2)
       # Here is the plotting code, we do all three slice directions in one figure. This was optimized for a human brain, you may need to
