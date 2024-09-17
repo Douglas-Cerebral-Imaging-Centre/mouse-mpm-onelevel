@@ -14,7 +14,7 @@ extract_receivergain () {
 }
 
 
-tail -n +2 "../sourcedata/mpm_cuprizone_bruker_scan_directories.csv" | while IFS=',' read -r sourcedata_folder subject_id session_id structural_scanidx flip1_TB1DAM_scanidx flip2_TB1DAM_scanidx mpm_pdw_scanidx mpm_mtw_scanidx mpm_t1w_scanidx; do
+tail -n +2 "../sourcedata/scan_indices.csv" | while IFS=',' read -r sourcedata_folder subject_id session_id structural_scanidx flip1_TB1DAM_scanidx flip2_TB1DAM_scanidx mpm_pdw_scanidx mpm_mtw_scanidx mpm_t1w_scanidx; do
     printf "Working on sub-%s, ses-%s\n" $subject_id $session_id
     # Extract ref power from all scans (I wanted to check if they were all the same)
     flip1_TB1DAM_receivergain=$(extract_receivergain ../sourcedata/${sourcedata_folder}/${flip1_TB1DAM_scanidx}/acqp)
