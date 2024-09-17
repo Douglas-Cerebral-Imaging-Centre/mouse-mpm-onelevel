@@ -20,9 +20,10 @@ git submodule update --init
 
 Then, follow the instructions in the READMEs of each subfolder in the following order. All the scripts must be launched from the `<project_dir>/code/` folder containing this README.md.
 
-1. **[bids_conversion](./bids_conversion):** :computer: Scripts and files to convert the raw Bruker data to the MPM BIDS format.
-2. **[preprocessing](./preprocessing):** Scripts to create composite images used for registration and preprocess them. 
-3. **[registration](./registration):** :computer: Scripts to register the data, either intra- or inter-session.
+1. **[qa](./qa):** Scripts to run quality assurance tests on the data set
+2. **[bids_conversion](./bids_conversion):** :computer: Scripts and files to convert the raw Bruker data to the MPM BIDS format.
+3. **[preprocessing](./preprocessing):** Scripts to create composite images used for registration and preprocess them. 
+4. **[registration](./registration):** :computer: Scripts to register the data, either intra- or inter-session.
 5. **[tb1_processing](./tb1_processing):** Compute the B1+ maps using an in-house toolbox
 6. **[qi](./qi):** Compute R2*, R1, PD, and MTsat using the QUIT (qi) toolbox
 7. **[statistical_analyses](./statistical_analyses):** :computer: Should be tailored to the tests and models you want to fit to your data
