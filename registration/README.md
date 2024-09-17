@@ -12,6 +12,8 @@ module load ANTs minc-toolkit-v2 minc-toolkit-extras
 
 # Register within session
 registration/reg_within_ses.sh
+# If you think there was no important motion within session, you can run 
+# registration/no_reg_within_ses.sh instead
 
 # Register between sessions and create template
 registration/run_modelbuild.sh
