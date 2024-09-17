@@ -47,12 +47,12 @@ for (i_mpm_map in mpm_maps) {
    for (predictor in dimnames(thresholds)[[2]][c(-1,-2)]) {
  
       #If you want to save this to a file, uncomment next line
-      svg(paste0("../derivatives/statistical_analyses/rminc_outputs/wsex/pbs_vs_",predictor,"_",i_mpm_map,"_tstatfdrthresh-p2.svg"), height = 3.1, width = 4)
+      svg(paste0("../derivatives/statistical_analyses/rminc_outputs/wsex/pbs_vs_",predictor,"_",i_mpm_map,"_tstatthresh-2.svg"), height = 3.1, width = 4)
       #We use a tryCatch here to keep going if there's some kind of error in a an individual plot
       tryCatch({
       #Here, we extract the thresholds from the code, and clip them to 2 digits, otherwise the plotting doesn't look good
       lowerthreshold = round(thresholds[fdr_threshold_for_svg,predictor],digits=2)
-      #lowerthreshold <- 2
+      lowerthreshold <- 2
       #Sometimes, there isn't an 0.01 threshold, when thats the case, we use the max instead, be careful to read the threshold array printed above
       upperthreshold = round(ifelse(is.na(thresholds["0.01",predictor]), max(c(max(mincArray(model, predictor)),abs(min(mincArray(model, predictor))))), thresholds["0.01",predictor]),digits=2)
       # Here is the plotting code, we do all three slice directions in one figure. This was optimized for a human brain, you may need to
