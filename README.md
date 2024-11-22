@@ -1,6 +1,13 @@
 # README for the mousempm repository
-General scripts to analyze the MPM data, organized by subfolders.
+Scripts to analyze mouse Multi-Parameter Mapping (MPM) data. 
+It takes images in the Bruker format and outputs MPM quantitative maps registered into the same space, ready for voxel-wise statistical analyses.
 Some parts must be adapted to your specific project. They are identified with a :computer: in the READMEs text.
+
+## Dependencies
+The scripts were tested on a Linux distribution. 
+Required softwares include brkraw, minc-toolkit-v2, minc-toolkit-extras, ANTs, FSL, mrtrix3/dev.20230312, R, RMINC, and QUIT.
+Integrated setup of the required environment can be done using [NeuroAnsible](https://github.com/gdevenyi/NeuroAnsible) and selecting the appropriate tags.
+A container might be available later. 
 
 ## Data and code organization
 We try to follow BIDS standards. To set up a directory for a project:
