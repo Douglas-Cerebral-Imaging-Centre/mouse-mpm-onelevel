@@ -1,9 +1,7 @@
 # statistical_analyses
-Collection of scripts to run the following statistical analyses on the MPM maps and DBM jacobians:
-* Test-retest metrics (implemented)
-* Effect of cuprizone diet (to be implemented)
-    * Control vs cuprizone, post diet
-    * Pre vs post diet in cuprizone group
+Collection of scripts to prepare the MPM maps and run voxel-wise statistical analyses. 
+Statistical analyses should be tailored to your project hypotheses. 
+You can check the [analyses](./analyses) folder for examples.
 
 The code should be run in this order
 ```
@@ -20,5 +18,5 @@ find ../derivatives/qi/outputs_to_commonspace/ -iname "*.nii" -exec nii2mnc -clo
 # Register final-target mask to template
 statistical_analyses/workflow/resample_mask_to_template.sh
 
-# Run analysis; see analyses folder for examples.
+# Run voxel-wise analyses; see analyses folder for examples.
 ```
